@@ -10,9 +10,9 @@
 # sh configure
 # popd
 
-rm -rf __build
-mkdir -p __build
-pushd __build
+rm -rf __build_linux
+mkdir -p __build_linux
+pushd __build_linux
 
 cmake -DCMAKE_BUILD_TYPE=debug ..
 cmake --build . --config debug
