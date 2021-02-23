@@ -5,15 +5,15 @@
 #
 
 	
-if( DEFINED CMAKE_BUILD_TYPE )
-	set( CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} CACHE STRING "Set to either \"Release\" or \"Debug\"" )
-else()
-	set( CMAKE_BUILD_TYPE Release CACHE STRING "Set to either \"Release\" or \"Debug\"" )
-endif()
+#if( DEFINED CMAKE_BUILD_TYPE )
+#	set( CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} CACHE STRING "Set to either \"Release\" or \"Debug\"" )
+#else()
+#	set( CMAKE_BUILD_TYPE Release CACHE STRING "Set to either \"Release\" or \"Debug\"" )
+#endif()
 
 # message( STATUS "CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}" )
 
-mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
+# mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
 project (behaviac)
 
 LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -21,6 +21,7 @@ INCLUDE(cmake/ModuleImport.cmake)
 INCLUDE(cmake/ModuleCompileOptions.cmake)
 ModuleSetCompileOptions()
 
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 message( STATUS "MSVC=${MSVC}" )
 
 # if (MSVC)
@@ -29,7 +30,7 @@ message( STATUS "MSVC=${MSVC}" )
 	# cmake_minimum_required (VERSION 2.8)
 # endif()
 
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.2)
 
 # SET(CMAKE_USE_RELATIVE_PATHS ON)
 
@@ -43,10 +44,10 @@ SET(BUILD_SHARED_LIBS ON CACHE BOOL "set to OFF to build static libraries")
 
 # configure a header file to pass some of the CMake settings
 # to the source code
-#CONFIGURE_FILE ("${PROJECT_SOURCE_DIR}/Config.h.in" "${PROJECT_BINARY_DIR}/Config.h")
+#CONFIGURE_FILE ("${CMAKE_CURRENT_SOURCE_DIR}/Config.h.in" "${PROJECT_BINARY_DIR}/Config.h")
 
-file(GLOB_RECURSE BEHAVIAC_INC  "${PROJECT_SOURCE_DIR}/inc/*.*")
-file(GLOB_RECURSE BEHAVIAC_SRC  "${PROJECT_SOURCE_DIR}/src/*.*")
+file(GLOB_RECURSE BEHAVIAC_INC  "${CMAKE_CURRENT_SOURCE_DIR}/inc/*.*")
+file(GLOB_RECURSE BEHAVIAC_SRC  "${CMAKE_CURRENT_SOURCE_DIR}/src/*.*")
 
 # exclude_dir = "/exclude_dir/"
 macro (ExcludeDir src_files exclude_dir)
@@ -60,7 +61,7 @@ endmacro()
 
 
 
-# usage: GroupSources("${PROJECT_SOURCE_DIR}/inc/", "inc")
+# usage: GroupSources("${CMAKE_CURRENT_SOURCE_DIR}/inc/", "inc")
 macro(GroupSources dir prefix)
     # file(GLOB_RECURSE elements RELATIVE ${dir} *.h *.hpp *.c *.cpp *.cc)
     file(GLOB_RECURSE elements RELATIVE ${dir} *.*)
@@ -83,8 +84,8 @@ macro(GroupSources dir prefix)
 endmacro()
 
 if (MSVC)
-	GroupSources("${PROJECT_SOURCE_DIR}/inc/" "inc")
-	GroupSources("${PROJECT_SOURCE_DIR}/src/" "src")
+	GroupSources("${CMAKE_CURRENT_SOURCE_DIR}/inc/" "inc")
+	GroupSources("${CMAKE_CURRENT_SOURCE_DIR}/src/" "src")
 endif()
 
 
@@ -93,7 +94,7 @@ endif()
 
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
-include_directories ("${PROJECT_SOURCE_DIR}/inc")
+include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/inc")
 
 if( DEFINED BEHAVIAC_VERSION_MODE )
 	set(BEHAVIAC_VERSION_MODE ${BEHAVIAC_VERSION_MODE} CACHE STRING "version mode, force to use dev/release version or default(dev version on Debug config and release version on Release config)")
@@ -277,10 +278,10 @@ if(MSVC OR BEHAVIAC_ANDROID_ON)
 	# else()
 		# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 	# endif()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 	
 	#warning treated as error
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX")
+	#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX")
 	#multiple processor compilation
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /EHs")
 	set (COMPILE_POSTFIX "msvc")
@@ -333,34 +334,34 @@ endif()
 # MESSAGE( STATUS "CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}" )
 
 configure_file (
-  "${CMAKE_CURRENT_SOURCE_DIR}/build/_config.h.in"
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/_config.h.in"
   "${CMAKE_CURRENT_SOURCE_DIR}/inc/behaviac/common/_config.h"
   NEWLINE_STYLE WIN32
   )
 
-if (NOT BEHAVIAC_ANDROID_STUDIO)
-    set(LIB_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-endif()
-set(BINARY_PATH ${PROJECT_SOURCE_DIR}/bin)
-
-set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_PATH} )
-if (NOT BEHAVIAC_ANDROID_STUDIO)
-    set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIB_OUTPUT_PATH} )
-    set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_PATH} )
-endif()
+#if (NOT BEHAVIAC_ANDROID_STUDIO)
+#    set(LIB_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+#endif()
+#set(BINARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+#
+#set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_PATH} )
+#if (NOT BEHAVIAC_ANDROID_STUDIO)
+#    set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIB_OUTPUT_PATH} )
+#    set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_PATH} )
+#endif()
 
 set( CMAKE_DEBUG_POSTFIX "_${COMPILE_POSTFIX}_debug" )
 set( CMAKE_RELEASE_POSTFIX "_${COMPILE_POSTFIX}_release" )
 
-foreach( OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES} )
-    string( TOUPPER ${OUTPUTCONFIG} OUTPUTCONFIG )
-    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${BINARY_PATH} )
-
-if (NOT BEHAVIAC_ANDROID_STUDIO)
-    set( CMAKE_LIBRARY_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${LIB_OUTPUT_PATH} )
-    set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${LIB_OUTPUT_PATH} )
-endif()
-endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
+#foreach( OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES} )
+#    string( TOUPPER ${OUTPUTCONFIG} OUTPUTCONFIG )
+#    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${BINARY_PATH} )
+#
+#if (NOT BEHAVIAC_ANDROID_STUDIO)
+#    set( CMAKE_LIBRARY_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${LIB_OUTPUT_PATH} )
+#    set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${LIB_OUTPUT_PATH} )
+#endif()
+#endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
 
 set( SHARED_LIB "" )
 
@@ -420,36 +421,36 @@ else()
 endif()
 
 if (NOT BEHAVIAC_ANDROID_STUDIO)
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/test/btunittest")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/test/btremotetest")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/test/demo_running")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/test/usertest")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/btunittest")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/btremotetest")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/demo_running")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/usertest")
 
 	if (MSVC)
-		add_subdirectory ("${PROJECT_SOURCE_DIR}/test/btperformance")
-	    if (EXISTS "${PROJECT_SOURCE_DIR}/example/spaceship")
-	        add_subdirectory ("${PROJECT_SOURCE_DIR}/example/spaceship")
+		add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/btperformance")
+	    if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/example/spaceship")
+	        add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/example/spaceship")
 	    endif()
 	endif()
 
-	#add_subdirectory ("${PROJECT_SOURCE_DIR}/example/airbattledemo")
+	#add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/example/airbattledemo")
 
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_1/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_1_1/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_1_2/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_2/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_3/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_4/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_5/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_6/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_7/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_8/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_9/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_10/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_11/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_12/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_13/cpp")
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_14/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_1/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_1_1/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_1_2/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_2/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_3/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_4/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_5/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_6/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_7/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_8/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_9/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_10/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_11/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_12/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_13/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_14/cpp")
 else()
-	add_subdirectory ("${PROJECT_SOURCE_DIR}/tutorials/tutorial_11/cpp")
+	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tutorials/tutorial_11/cpp")
 endif()
