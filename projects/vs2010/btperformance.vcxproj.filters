@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="test">
+      <UniqueIdentifier>{42A81708-E6A4-0144-8962-7F79EFE98668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btperformance">
+      <UniqueIdentifier>{26D8F22F-097B-D440-BED5-D19A36340270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btperformance\behaviac_generated">
+      <UniqueIdentifier>{F8B855AC-E02E-E34C-A07B-8885D5EDAC0F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btperformance\behaviac_generated\behaviors">
+      <UniqueIdentifier>{8B5A5574-AC69-1343-9820-BDC6684E8452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btperformance\behaviac_generated\types">
+      <UniqueIdentifier>{BA397326-78B1-114E-8255-FD79195F992F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btperformance\behaviac_generated\types\internal">
+      <UniqueIdentifier>{58796F73-0FC5-D844-8F51-7B757EDFB033}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\test\btperformance\BehaviacWorkspace.h">
+      <Filter>test\btperformance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\btperformance.h">
+      <Filter>test\btperformance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\behaviac_generated\behaviors\behaviac_generated_behaviors.h">
+      <Filter>test\btperformance\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\behaviac_generated\types\behaviac_types.h">
+      <Filter>test\btperformance\behaviac_generated\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\behaviac_generated\types\internal\behaviac_agent_headers.h">
+      <Filter>test\btperformance\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\behaviac_generated\types\internal\behaviac_agent_member_visitor.h">
+      <Filter>test\btperformance\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\behaviac_generated\types\internal\behaviac_agent_meta.h">
+      <Filter>test\btperformance\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btperformance\behaviac_generated\types\internal\behaviac_headers.h">
+      <Filter>test\btperformance\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\btperformance\BehaviacWorkspace.cpp">
+      <Filter>test\btperformance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btperformance\btperformance.cpp">
+      <Filter>test\btperformance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btperformance\behaviac_generated\behaviors\behaviac_generated_behaviors.cpp">
+      <Filter>test\btperformance\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btperformance\behaviac_generated\types\internal\behaviac_agent_meta.cpp">
+      <Filter>test\btperformance\behaviac_generated\types\internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

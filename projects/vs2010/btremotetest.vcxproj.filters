@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="test">
+      <UniqueIdentifier>{9FB307D5-719E-8348-8BEB-00AD96424C65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btremotetest">
+      <UniqueIdentifier>{AB28A3FF-520F-A94C-BDF5-D696997DAF71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btremotetest\workspace">
+      <UniqueIdentifier>{859DB5E6-3FB3-5C42-9851-4B822DB7971D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btremotetest\workspace\exported">
+      <UniqueIdentifier>{24EF6494-9B5D-A24B-894F-509B8FD19C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btremotetest\workspace\exported\behaviac_generated">
+      <UniqueIdentifier>{10FFA30C-157D-9546-B00E-A2FF8AD17B5A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btremotetest\workspace\exported\behaviac_generated\types">
+      <UniqueIdentifier>{15FFD183-A4B4-714C-A78E-ACF945019431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btremotetest\workspace\exported\behaviac_generated\types\internal">
+      <UniqueIdentifier>{D561837E-5849-F841-BB3B-99323E09F8AC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\test\btremotetest\BTPlayer.h">
+      <Filter>test\btremotetest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btremotetest\workspace\exported\behaviac_generated\types\behaviac_types.h">
+      <Filter>test\btremotetest\workspace\exported\behaviac_generated\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btremotetest\workspace\exported\behaviac_generated\types\internal\behaviac_agent_headers.h">
+      <Filter>test\btremotetest\workspace\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btremotetest\workspace\exported\behaviac_generated\types\internal\behaviac_agent_member_visitor.h">
+      <Filter>test\btremotetest\workspace\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btremotetest\workspace\exported\behaviac_generated\types\internal\behaviac_agent_meta.h">
+      <Filter>test\btremotetest\workspace\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btremotetest\workspace\exported\behaviac_generated\types\internal\behaviac_headers.h">
+      <Filter>test\btremotetest\workspace\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\btremotetest\BTPlayer.cpp">
+      <Filter>test\btremotetest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btremotetest\remote_test.cpp">
+      <Filter>test\btremotetest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btremotetest\workspace\exported\behaviac_generated\types\internal\behaviac_agent_meta.cpp">
+      <Filter>test\btremotetest\workspace\exported\behaviac_generated\types\internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

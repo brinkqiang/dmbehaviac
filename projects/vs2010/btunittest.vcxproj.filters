@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="test">
+      <UniqueIdentifier>{1E9376F1-EF63-8344-8AE7-00C93DD3D54B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest">
+      <UniqueIdentifier>{7C816084-B583-5E4D-AB55-F079E025C0FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\Agent">
+      <UniqueIdentifier>{C3405B40-B9B6-CD46-BE2E-6809A43AA22A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\behaviac_generated">
+      <UniqueIdentifier>{5D59346C-3CCE-CB47-8314-1602FB02D5A1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\behaviac_generated\behaviors">
+      <UniqueIdentifier>{4F303643-B43C-F84F-8592-197A7D46BDA3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\behaviac_generated\types">
+      <UniqueIdentifier>{A58F345C-3F66-CC41-8A0E-D28590ABBF13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\behaviac_generated\types\internal">
+      <UniqueIdentifier>{90D7897C-DE5B-EE4D-8496-DC5930E18FF2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\ext">
+      <UniqueIdentifier>{11FA3DDC-7B78-7E4E-AEF5-EE30EF3A8EA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\ArrayAccessTest">
+      <UniqueIdentifier>{89BB13CA-2DB1-624C-8FD0-A7A67637948C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\attachments">
+      <UniqueIdentifier>{00121CF1-437B-024D-A5A7-04E830DF039D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\FSMTest">
+      <UniqueIdentifier>{8E5B1F9D-D072-2242-89A2-35BE589D48BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\HTNTest">
+      <UniqueIdentifier>{757996E5-3ACB-C440-A9EE-92EE391FD527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\Meta">
+      <UniqueIdentifier>{0DDD3353-6402-D94F-AD57-23AEE79A3910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\NodeTest">
+      <UniqueIdentifier>{A48E0277-AD3F-4249-8C88-592FDBE0A584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\Others">
+      <UniqueIdentifier>{9C539839-501E-FB42-A371-652E0738E591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\btunittest\ParPropertyTest">
+      <UniqueIdentifier>{063F345C-CF5B-764B-ACEC-06D03F7D7D93}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\test\btunittest\BehaviacWorkspace.h">
+      <Filter>test\btunittest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviortest.h">
+      <Filter>test\btunittest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\btloadtestsuite.h">
+      <Filter>test\btunittest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\test.h">
+      <Filter>test\btunittest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\AgentArrayAccessTest.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\AgentNodeTest.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\CustomPropertyAgent.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\EmployeeParTestAgent.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\FSMAgentTest.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\HTNAgentHouse.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\HTNAgentHouseBase.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\HTNAgentTravel.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\ParTestAgent.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\ParTestAgentBase.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\ParTestRegNameAgent.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\PreconEffectorAgent.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\PreconEffectorTest.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\PropertyReadonlyAgent.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\Agent\UnitTestTypes.h">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_0.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_1.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_10.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_2.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_3.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_4.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_5.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_6.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_7.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_8.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_9.h">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\types\behaviac_types.h">
+      <Filter>test\btunittest\behaviac_generated\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_agent_headers.h">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_agent_member_visitor.h">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_agent_meta.h">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_customized_types.h">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_headers.h">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\ext\extendreftype.h">
+      <Filter>test\btunittest\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\ext\extendstruct.h">
+      <Filter>test\btunittest\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\btunittest\ext\range.h">
+      <Filter>test\btunittest\ext</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\btunittest\behaviacsystem.cpp">
+      <Filter>test\btunittest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\BehaviacWorkspace.cpp">
+      <Filter>test\btunittest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\main.cpp">
+      <Filter>test\btunittest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\AgentArrayAccessTest.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\AgentNodeTest.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\CustomPropertyAgent.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\EmployeeParTestAgent.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\FSMAgentTest.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\HTNAgentHouse.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\HTNAgentHouseBase.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\HTNAgentTravel.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\ParTestAgent.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\ParTestAgentBase.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\ParTestRegNameAgent.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\PreconEffectorAgent.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\PreconEffectorTest.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\PropertyReadonlyAgent.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Agent\UnitTestTypes.cpp">
+      <Filter>test\btunittest\Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\ArrayAccessTest\ArrayAccessTest.cpp">
+      <Filter>test\btunittest\ArrayAccessTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\attachments\PreconEffectorUintTest.cpp">
+      <Filter>test\btunittest\attachments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_0.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_1.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_10.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_2.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_3.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_4.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_5.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_6.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_7.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_8.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\behaviors\behaviac_generated_behaviors_9.cpp">
+      <Filter>test\btunittest\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_agent_meta.cpp">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\behaviac_generated\types\internal\behaviac_customized_types.cpp">
+      <Filter>test\btunittest\behaviac_generated\types\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\ext\extendreftype.cpp">
+      <Filter>test\btunittest\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\FSMTest\fsmtestbase_0.cpp">
+      <Filter>test\btunittest\FSMTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\FSMTest\fsmunittest.cpp">
+      <Filter>test\btunittest\FSMTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\HTNTest\htnhouseunittest.cpp">
+      <Filter>test\btunittest\HTNTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\HTNTest\htntravelunittest.cpp">
+      <Filter>test\btunittest\HTNTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Meta\testtype.cpp">
+      <Filter>test\btunittest\Meta</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\DecorationNodeUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\EnterExitActionUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\EventUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\NodeUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\ParallelNodeUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\PredicateUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\NodeTest\QueryUnitTest.cpp">
+      <Filter>test\btunittest\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\btloadtest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\btmethodtest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\btunittest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\parallelnodetest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\probabilityselectortest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\selectorlooptest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\selectorstochastictest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\Others\sequencestochastictest.cpp">
+      <Filter>test\btunittest\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\ParPropertyTest\ParPropertyUnitTest.cpp">
+      <Filter>test\btunittest\ParPropertyTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\btunittest\ParPropertyTest\PropertyReadonlyUnitTest.cpp">
+      <Filter>test\btunittest\ParPropertyTest</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

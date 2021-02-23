@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="test">
+      <UniqueIdentifier>{625E004A-CDF1-934B-846B-569C6D635067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running">
+      <UniqueIdentifier>{F1372EFE-6A73-2A41-849E-D65AE423E669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running\behaviac">
+      <UniqueIdentifier>{54E9C99B-2458-D944-A344-DD5CEC283E6C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running\behaviac\exported">
+      <UniqueIdentifier>{A92B6CAA-A47D-8448-9C78-7042E9C2E78F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running\behaviac\exported\behaviac_generated">
+      <UniqueIdentifier>{DFA004CF-A8E5-0D42-901F-F78DA9BC3E46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running\behaviac\exported\behaviac_generated\behaviors">
+      <UniqueIdentifier>{FF1B0409-A101-C944-81F5-E56E7D23E832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running\behaviac\exported\behaviac_generated\types">
+      <UniqueIdentifier>{9D54B0AE-69DE-C245-A524-01EF48953ED7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\demo_running\behaviac\exported\behaviac_generated\types\internal">
+      <UniqueIdentifier>{F7183919-D368-A540-B6A1-3976A96827A5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\test\demo_running\BTPlayer.h">
+      <Filter>test\demo_running</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\behaviors\behaviac_generated_behaviors.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\behaviac_types.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_agent_headers.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_agent_member_visitor.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_agent_meta.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_customized_types.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_headers.h">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\demo_running\BTPlayer.cpp">
+      <Filter>test\demo_running</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\demo_running\demo_running.cpp">
+      <Filter>test\demo_running</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\behaviors\behaviac_generated_behaviors.cpp">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_agent_meta.cpp">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\demo_running\behaviac\exported\behaviac_generated\types\internal\behaviac_customized_types.cpp">
+      <Filter>test\demo_running\behaviac\exported\behaviac_generated\types\internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
