@@ -14,7 +14,7 @@ rm -rf __build
 mkdir -p __build
 pushd __build
 
-cmake -DCMAKE_BUILD_TYPE=debug -DBUILD_USE_64BITS='ON' ..
+cmake -DCMAKE_BUILD_TYPE=debug ..
 cmake --build . --config debug
 
 popd
