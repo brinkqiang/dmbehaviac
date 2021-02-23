@@ -328,8 +328,8 @@ endif()
 # MESSAGE( STATUS "CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}" )
 
 configure_file (
-  "${PROJECT_SOURCE_DIR}/build/_config.h.in"
-  "${PROJECT_SOURCE_DIR}/inc/behaviac/common/_config.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/build/_config.h.in"
+  "${CMAKE_CURRENT_SOURCE_DIR}/inc/behaviac/common/_config.h"
   NEWLINE_STYLE WIN32
   )
 
