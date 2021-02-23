@@ -16,6 +16,11 @@ endif()
 mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
 project (behaviac)
 
+LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+INCLUDE(cmake/ModuleImport.cmake)
+INCLUDE(cmake/ModuleCompileOptions.cmake)
+ModuleSetCompileOptions()
+
 message( STATUS "MSVC=${MSVC}" )
 
 # if (MSVC)
