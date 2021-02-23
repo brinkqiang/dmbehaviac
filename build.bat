@@ -1,9 +1,9 @@
 
-rmdir /S /Q build
-mkdir build
-pushd build
-cmake -A x64 -DCMAKE_BUILD_TYPE=relwithdebinfo ..
-cmake --build . --config relwithdebinfo
+rmdir /S /Q __build
+mkdir __build
+pushd __build
+cmake -A x64 -DCMAKE_BUILD_TYPE=debug ..
+cmake --build . --config debug
 popd
 
 rem pause

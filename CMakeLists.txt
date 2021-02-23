@@ -21,7 +21,7 @@ INCLUDE(cmake/ModuleImport.cmake)
 INCLUDE(cmake/ModuleCompileOptions.cmake)
 ModuleSetCompileOptions()
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/build)
 message( STATUS "MSVC=${MSVC}" )
 
 # if (MSVC)
@@ -334,7 +334,7 @@ endif()
 # MESSAGE( STATUS "CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}" )
 
 configure_file (
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/_config.h.in"
+  "${CMAKE_CURRENT_SOURCE_DIR}/build/_config.h.in"
   "${CMAKE_CURRENT_SOURCE_DIR}/inc/behaviac/common/_config.h"
   NEWLINE_STYLE WIN32
   )
