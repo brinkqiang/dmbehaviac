@@ -64,7 +64,7 @@ bool InitBehavic()
 	behaviac::RandomGenerator::GetInstance()->setSeed((unsigned int)timer);
 #endif
 
-	behaviac::Workspace::GetInstance()->SetFilePath("../tutorials/tutorial_13/cpp/exported");
+	behaviac::Workspace::GetInstance()->SetFilePath("../../tutorials/tutorial_13/cpp/exported");
 
 	behaviac::Workspace::GetInstance()->SetFileFormat(behaviac::Workspace::EFF_xml);
 

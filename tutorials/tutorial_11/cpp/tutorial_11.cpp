@@ -64,7 +64,7 @@ const char* InitBehavic()
 	LOGI("InitBehavic\n");
 
 #if !BEHAVIAC_CCDEFINE_ANDROID
-	behaviac::Workspace::GetInstance()->SetFilePath("../tutorials/tutorial_11/cpp/exported");
+	behaviac::Workspace::GetInstance()->SetFilePath("../../tutorials/tutorial_11/cpp/exported");
 #else
     behaviac::Workspace::GetInstance()->SetFilePath("assets:/behaviac/exported");
 #endif

@@ -60,7 +60,7 @@ bool InitBehavic()
 	//behaviac::Config::SetSocketPort(60636);
 	behaviac::Config::SetLogging(true);
 
-	behaviac::Workspace::GetInstance()->SetFilePath("../tutorials/tutorial_7/cpp/exported");
+	behaviac::Workspace::GetInstance()->SetFilePath("../../tutorials/tutorial_7/cpp/exported");
 
 	behaviac::Workspace::GetInstance()->SetFileFormat(behaviac::Workspace::EFF_xml);
 

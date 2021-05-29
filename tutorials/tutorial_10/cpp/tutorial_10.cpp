@@ -60,7 +60,7 @@ bool InitBehavic()
 
 	g_MyFileManager = BEHAVIAC_NEW MyFileManager();
 
-	behaviac::Workspace::GetInstance()->SetFilePath("../tutorials/tutorial_10/cpp/exported");
+	behaviac::Workspace::GetInstance()->SetFilePath("../../tutorials/tutorial_10/cpp/exported");
 
 	behaviac::Workspace::GetInstance()->SetFileFormat(behaviac::Workspace::EFF_xml);
 
