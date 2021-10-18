@@ -67,7 +67,7 @@ int my_main(bool bVerbose)
 #endif
 #endif
 
-    behaviac::Workspace::GetInstance()->SetFilePath("../test/btunittest/BehaviacData/exported");
+    behaviac::Workspace::GetInstance()->SetFilePath("../../test/btunittest/BehaviacData/exported");
 #if ENABLE_MEMORY_LEAKTEST
 	memory_leak_test(behaviac::Workspace::EFF_xml);
 

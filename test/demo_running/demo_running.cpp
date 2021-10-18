@@ -55,8 +55,8 @@ static void SetExePath()
 CBTPlayer* g_player = NULL;
 
 bool InitBehavic(behaviac::Workspace::EFileFormat ff, 
-	const char* szFilePath = "../test/demo_running/behaviac/exported", 
-	const char* szExportMetaFile = "../test/demo_running/behaviac/demo_running.xml")
+	const char* szFilePath = "../../test/demo_running/behaviac/exported", 
+	const char* szExportMetaFile = "../../test/demo_running/behaviac/demo_running.xml")
 {
 	LOGI("InitBehavic\n");
 

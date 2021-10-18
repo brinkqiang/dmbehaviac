@@ -60,7 +60,7 @@ bool InitBehavic(behaviac::Workspace::EFileFormat ff)
     //behaviac::Config::SetSocketBlocking(false);
     //behaviac::Config::SetSocketPort(8081);
 
-    behaviac::Workspace::GetInstance()->SetFilePath("../test/usertest/behaviac/exported");
+    behaviac::Workspace::GetInstance()->SetFilePath("../../test/usertest/behaviac/exported");
     behaviac::Workspace::GetInstance()->SetFileFormat(ff);
 
     //behaviac::Agent::SetIdMask(kIdMask_Wolrd | kIdMask_Opponent);
