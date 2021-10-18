@@ -14,10 +14,9 @@ rm -rf __build_linux
 mkdir -p __build_linux
 pushd __build_linux
 
-cmake -DCMAKE_BUILD_TYPE=debug ..
-cmake --build . --config debug
+cmake -DCMAKE_BUILD_TYPE=relwithdebinfo ..
+cmake --build . --config relwithdebinfo
 
 popd
-# popd
 
 # echo continue && read -n 1
