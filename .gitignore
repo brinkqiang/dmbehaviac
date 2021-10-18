@@ -13,5 +13,6 @@ _deps
 /bin/*
 /lib/*
 /build/*
-/__build/*
+/__build*
 /.vscode/*
+*.cache
