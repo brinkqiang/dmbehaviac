@@ -50,7 +50,20 @@ static void SetExePath()
 }
 #endif
 
-FirstAgent* g_FirstAgent = NULL;
+template<typename T>
+struct AgentDeleter
+{
+
+    inline void operator()(T* f) const
+    {
+        if (f)
+        {
+            behaviac::Agent::Destroy(f);
+        }
+    }
+};
+
+std::unique_ptr<FirstAgent, AgentDeleter<FirstAgent>> g_FirstAgent;
 
 bool InitBehavic()
 {
@@ -67,7 +80,7 @@ bool InitPlayer()
 {
 	LOGI("InitPlayer\n");
 
-	g_FirstAgent = behaviac::Agent::Create<FirstAgent>();
+	g_FirstAgent.reset(behaviac::Agent::Create<FirstAgent>());
 
 	bool bRet = g_FirstAgent->btload("FirstBT");
 
@@ -95,7 +108,7 @@ void CleanupPlayer()
 {
 	LOGI("CleanupPlayer\n");
 
-	behaviac::Agent::Destroy(g_FirstAgent);
+	g_FirstAgent.release();
 }
 
 void CleanupBehaviac()
