@@ -15,8 +15,10 @@ mkdir -p __build_linux
 pushd __build_linux
 
 cmake -DCMAKE_BUILD_TYPE=relwithdebinfo ..
-cmake --build . --config relwithdebinfo
+cmake --build . --config relwithdebinfo -- -j$(nproc)
 
 popd
+
+# popd
 
 # echo continue && read -n 1
