@@ -218,7 +218,7 @@ endif()
 SET(BUILD_USE_64BITS OFF CACHE BOOL "set to ON to use 64 bits")	
 
 if (MSVC)
-	if (CMAKE_GENERATOR MATCHES "64")
+	if (CMAKE_SIZEOF_VOID_P EQUAL 8)
 		SET(BUILD_USE_64BITS ON CACHE BOOL "CMAKE_GENERATOR is for 64 bit, set to ON accordingly" FORCE)	
 	endif()
 else()
@@ -227,7 +227,7 @@ endif()
 
 if (BUILD_USE_64BITS)
 	if (MSVC)
-		if (NOT CMAKE_GENERATOR MATCHES "64")
+		if (NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
 			#
 			message( SEND_ERROR "You need to specify '${CMAKE_GENERATOR} Win64' to generate project file for 64 bit" )
 		endif()
