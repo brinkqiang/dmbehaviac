@@ -51,14 +51,41 @@ static void SetExePath()
 }
 #endif
 
-MyFileManager* g_MyFileManager = NULL;
-FirstAgent* g_FirstAgent = NULL;
+template<typename T>
+struct AgentDeleter
+{
+
+    inline void operator()(T* f) const
+    {
+        if (f)
+        {
+            behaviac::Agent::Destroy(f);
+        }
+    }
+};
+
+template<typename T>
+struct FileManagerDeleter
+{
+
+    inline void operator()(T* f) const
+    {
+        if (f)
+        {
+            BEHAVIAC_DELETE(f);
+        }
+    }
+};
+
+std::unique_ptr<FirstAgent, AgentDeleter<FirstAgent>> g_FirstAgent;
+
+std::unique_ptr<MyFileManager, FileManagerDeleter<MyFileManager>> g_MyFileManager;
 
 bool InitBehavic()
 {
 	LOGI("InitBehavic\n");
 
-	g_MyFileManager = BEHAVIAC_NEW MyFileManager();
+	g_MyFileManager.reset(BEHAVIAC_NEW MyFileManager());
 
 	behaviac::Workspace::GetInstance()->SetFilePath("../../tutorials/tutorial_10/cpp/exported");
 
@@ -71,7 +98,7 @@ bool InitPlayer()
 {
 	LOGI("InitPlayer\n");
 
-	g_FirstAgent = behaviac::Agent::Create<FirstAgent>();
+	g_FirstAgent.reset(behaviac::Agent::Create<FirstAgent>());
 
 	bool bRet = g_FirstAgent->btload("FirstBT");
 
@@ -97,9 +124,8 @@ void UpdateLoop()
 
 void CleanupPlayer()
 {
+	g_FirstAgent.release();
 	LOGI("CleanupPlayer\n");
-
-	behaviac::Agent::Destroy(g_FirstAgent);
 }
 
 void CleanupBehaviac()
@@ -108,11 +134,8 @@ void CleanupBehaviac()
 
 	behaviac::Workspace::GetInstance()->Cleanup();
 
-	if (g_MyFileManager)
-	{
-		BEHAVIAC_DELETE(g_MyFileManager);
-		g_MyFileManager = NULL;
-	}
+	g_MyFileManager.release();
+
 }
 
 #if !BEHAVIAC_CCDEFINE_ANDROID
