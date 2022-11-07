@@ -42,6 +42,11 @@ set (BEHAVIAC_PACKAGE_VERSION 3.6.39)
 #option( BUILD_SHARED_LIBS "set to OFF to build static libraries" ON )
 SET(BUILD_SHARED_LIBS ON CACHE BOOL "set to OFF to build static libraries")
 
+
+IF (UNIX)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnonnull")
+ENDIF(UNIX)
+
 # configure a header file to pass some of the CMake settings
 # to the source code
 #CONFIGURE_FILE ("${CMAKE_CURRENT_SOURCE_DIR}/Config.h.in" "${PROJECT_BINARY_DIR}/Config.h")
@@ -202,7 +207,7 @@ if(BEHAVIAC_RELEASE_ON)
 		# -fwhole-program
 		# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffunction-sections -fdata-sections -fvisibility=hidden -O3 -flto")
 		# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os -flto -fno-fat-lto-objects")
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnonnull")
+		# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnonnull")
 		# set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,--gc-sections -flto")
 		# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--gc-sections -flto")
 		# set(CMAKE_STATIC_LINKER_FLAGS_RELEASE "${CMAKE_STATIC_LINKER_FLAGS_RELEASE} -flto")
