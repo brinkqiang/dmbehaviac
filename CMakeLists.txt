@@ -44,7 +44,7 @@ SET(BUILD_SHARED_LIBS ON CACHE BOOL "set to OFF to build static libraries")
 
 
 IF (UNIX)
-add_definitions(-W)
+add_definitions(-w)
 ENDIF(UNIX)
 
 # configure a header file to pass some of the CMake settings
