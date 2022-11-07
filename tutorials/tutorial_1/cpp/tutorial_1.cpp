@@ -26,6 +26,7 @@
 #endif
 
 #endif
+#include <memory>
 
 #if !BEHAVIAC_CCDEFINE_ANDROID
 static void SetExePath()
