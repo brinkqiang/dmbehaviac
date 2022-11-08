@@ -853,8 +853,8 @@ LOAD_TEST(btunittest, action_ut_waitforsignal_0_saveload)
     CHECK_EQUAL(-1, myTestAgent->testVar_1);
     CHECK_FLOAT_EQUAL(-1.0f, myTestAgent->testVar_2);
 
-    //myTestAgent->SetVariable("testVar_1", -1);
-    //myTestAgent->SetVariable("testVar_2", -1.0f);
+    myTestAgent->SetVariable("testVar_1", -99);
+    myTestAgent->SetVariable("testVar_2", -99.0f);
 
     behaviac::State_t state;
     myTestAgent->btsave(state);
@@ -862,16 +862,16 @@ LOAD_TEST(btunittest, action_ut_waitforsignal_0_saveload)
     myTestAgent->SaveDataToFile("agent_state.xml");
 
     //modify the members
-    myTestAgent->testVar_1 = 1;
-    myTestAgent->testVar_2 = 1;
+    myTestAgent->testVar_1 = 99;
+    myTestAgent->testVar_2 = 99;
 
     behaviac::State_t stateTemp;
     stateTemp.LoadFromFile("btsave2.xml");
     myTestAgent->btload(stateTemp);
 
     myTestAgent->LoadDataFromFile("agent_state.xml");
-    CHECK_EQUAL(-1, myTestAgent->testVar_1);
-    CHECK_FLOAT_EQUAL(-1.0f, myTestAgent->testVar_2);
+    CHECK_EQUAL(-99, myTestAgent->testVar_1);
+    CHECK_FLOAT_EQUAL(-99.0f, myTestAgent->testVar_2);
 
     finlTestEnvNode(myTestAgent);
 }
