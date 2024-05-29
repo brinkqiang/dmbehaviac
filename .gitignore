@@ -21,5 +21,5 @@ _deps
 /tools/designer/External/DockPanel/WinFormsUI/obj/Debug
 /tools/designer/Plugins/PluginBehaviac/obj/Debug
 /tools/designer/out
-
 /tools/designer/.vs
+/tools/designer/External/DockPanel/WinFormsUI/bin/Debug
