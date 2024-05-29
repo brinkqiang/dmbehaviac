@@ -16,3 +16,10 @@ _deps
 /__build*
 /.vscode/*
 *.cache
+/tools/designer/BehaviacDesigner/obj/Debug
+/tools/designer/BehaviacDesignerBase/obj/Debug
+/tools/designer/External/DockPanel/WinFormsUI/obj/Debug
+/tools/designer/Plugins/PluginBehaviac/obj/Debug
+/tools/designer/out
+
+/tools/designer/.vs
