@@ -14,6 +14,9 @@
 # message( STATUS "CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}" )
 
 # mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
+
+cmake_minimum_required (VERSION 3.21)
+
 project (behaviac)
 
 LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -30,7 +33,6 @@ message( STATUS "MSVC=${MSVC}" )
 	# cmake_minimum_required (VERSION 2.8)
 # endif()
 
-cmake_minimum_required (VERSION 3.2)
 
 # SET(CMAKE_USE_RELATIVE_PATHS ON)
 
