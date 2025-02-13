@@ -22,6 +22,32 @@
 #include <tchar.h>
 #endif
 
+#include <iostream>
+#include <csignal>  // 用于 raise() 函数
+#include <cstdlib>  // 用于 std::exit()
+#include <cstdio>   // 用于 printf
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h> // 用于 GenerateConsoleCtrlEvent
+#endif
+
+static void sendSigIntToSelf() {
+#if defined(_WIN32) || defined(_WIN64)
+    // 在 Windows 上模拟 CTRL_C_EVENT (SIGINT) 信号
+    if (!GenerateConsoleCtrlEvent(CTRL_C_EVENT, 0)) {
+        std::cerr << "Failed to send SIGINT signal on Windows." << std::endl;
+    } else {
+        std::cout << "SIGINT signal simulated on Windows." << std::endl;
+    }
+#else
+    // 在 Unix-like 系统（Linux, macOS）上发送 SIGINT 信号
+    if (raise(SIGINT) != 0) {
+        std::cerr << "Failed to send SIGINT signal on Unix-like system." << std::endl;
+    } else {
+        std::cout << "SIGINT signal sent on Unix-like system." << std::endl;
+    }
+#endif
+}
+
 static void SetExePath()
 {
 #if BEHAVIAC_CCDEFINE_MSVC
@@ -42,6 +68,8 @@ static void SetExePath()
 	SetCurrentDirectory(szCurPath);
 #endif
 }
+
+
 
 class AgentManager : public CDMTimerNode, public TSingleton<AgentManager>
 {
@@ -98,6 +126,7 @@ public:
     {
         KillTimer();
         CleanupAgents();
+        sendSigIntToSelf();
     }
 
     virtual void OnTimer(uint64_t qwIDEvent)
