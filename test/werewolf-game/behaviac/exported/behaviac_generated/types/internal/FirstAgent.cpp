@@ -28,7 +28,7 @@ FirstAgent::~FirstAgent()
 void FirstAgent::Say(behaviac::string& value)
 {
 ///<<< BEGIN WRITING YOUR CODE Say
-	fmt::print("FirstAgent::Say({})", value);
+	fmt::print("{}\n", value);
 ///<<< END WRITING YOUR CODE
 }
 

@@ -1,6 +1,9 @@
 ﻿#include "behaviac/behaviac.h"
 #include <iostream>
 #include <ctime>
+#include <vector>
+#include <memory>  // 用于std::shared_ptr
+
 #include "./behaviac/exported/behaviac_generated/types/behaviac_types.h"
 
 #if BEHAVIAC_CCDEFINE_MSVC
@@ -34,59 +37,74 @@ static void SetExePath()
 #endif
 }
 
+class AgentManager
+{
+public:
+    // 创建多个代理
+    void CreateAgent(const char* pszTreeName)
+    {
+        auto agent = behaviac::Agent::Create<FirstAgent>();
+        if (agent->btload(pszTreeName))
+        {
+            agent->btsetcurrent(pszTreeName);
+            agents.push_back(agent);  // 将新代理添加到管理列表中
+        }
+        else
+        {
+            cout << "Failed to load behavior tree for agent!" << endl;
+        }
+    }
+
+    // 更新所有代理
+    void UpdateAgents()
+    {
+        for (auto& agent : agents)
+        {
+            behaviac::Workspace::GetInstance()->Update();  // 更新每个代理的行为树
+        }
+    }
+
+    // 销毁所有代理
+    void CleanupAgents()
+    {
+        for (auto& agent : agents)
+        {
+            behaviac::Agent::Destroy(agent);  // 销毁代理
+        }
+        agents.clear();
+    }
+
+private:
+    std::vector<FirstAgent*> agents;  // 使用shared_ptr管理代理的生命周期
+};
+
 bool InitBehavic(behaviac::Workspace::EFileFormat ff)
 {
-    // 设置行为树的文件路径和格式
     behaviac::Workspace::GetInstance()->SetFilePath("../../test/werewolf-game/behaviac/exported");
     behaviac::Workspace::GetInstance()->SetFileFormat(ff);
     return true;
 }
 
-bool InitAgent(const char* pszTreeName)
-{
-    // 创建并加载代理
-    g_agent = behaviac::Agent::Create<FirstAgent>();
-    bool bRet = g_agent->btload(pszTreeName);
-    if (bRet)
-    {
-        g_agent->btsetcurrent(pszTreeName);
-    }
-    return bRet;
-}
-
-void CleanupAgent()
-{
-    // 销毁代理
-    behaviac::Agent::Destroy(g_agent);
-}
-
-void CleanupBehaviac()
-{
-    // 清理Behaviac工作空间
-    behaviac::Workspace::GetInstance()->Cleanup();
-}
-
 int main()
 {
     SetExePath();
-
-    cout << "Running behavior tree..." << endl;
+    cout << "Running behavior tree with multiple agents..." << endl;
 
     const char* szTreeName = "ParentBT";  // 设定行为树名称
-    int loopCount = 1000;  // 执行的循环次数
+    int loopCount = 10;  // 执行的循环次数
 
     InitBehavic(behaviac::Workspace::EFF_xml);  // 初始化Behaviac，使用XML格式
-    if (!InitAgent(szTreeName))  // 初始化代理并加载行为树
-    {
-        cout << "Failed to load behavior tree: " << szTreeName << endl;
-        return -1;
-    }
+
+    // 创建 AgentManager 并添加多个代理
+    AgentManager manager;
+    manager.CreateAgent(szTreeName);
+    manager.CreateAgent(szTreeName);  // 你可以继续添加更多的代理
 
     clock_t start = clock();  // 开始计时
 
     for (int i = 0; i < loopCount; ++i)
     {
-        behaviac::Workspace::GetInstance()->Update();  // 更新行为树
+        manager.UpdateAgents();  // 更新所有代理的行为树
     }
 
     clock_t finish = clock();  // 结束计时
@@ -94,8 +112,7 @@ int main()
 
     cout << "Duration (seconds): " << duration << " RunCount: " << loopCount << endl;
 
-    CleanupAgent();  // 清理代理
-    CleanupBehaviac();  // 清理Behaviac
+    manager.CleanupAgents();  // 清理所有代理
 
     return 0;
 }
