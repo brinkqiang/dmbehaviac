@@ -11,157 +11,21 @@ namespace behaviac
 {
 	// Source file: ParentBT
 
-	class Assignment_bt_ParentBT_node5 : public Assignment
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Assignment_bt_ParentBT_node5, Assignment);
-		Assignment_bt_ParentBT_node5()
-		{
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			EBTStatus result = BT_SUCCESS;
-			int opr = 6;
-			((FirstAgent*)pAgent)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >() = opr;
-			return result;
-		}
-	};
-
-	class Condition_bt_ParentBT_node6 : public Condition
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Condition_bt_ParentBT_node6, Condition);
-		Condition_bt_ParentBT_node6()
-		{
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			int& opl = ((FirstAgent*)pAgent)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >();
-			int opr = 1;
-			bool op = PrivateDetails::Greater(opl, opr);
-			return op ? BT_SUCCESS : BT_FAILURE;
-		}
-	};
-
 	class Action_bt_ParentBT_node0 : public Action
 	{
 	public:
 		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Action_bt_ParentBT_node0, Action);
 		Action_bt_ParentBT_node0()
 		{
-			method_p0 = (char*)("Hello Prefab!");
 		}
 	protected:
 		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
 		{
 			BEHAVIAC_UNUSED_VAR(pAgent);
 			BEHAVIAC_UNUSED_VAR(childStatus);
-			((FirstAgent*)pAgent)->Say(method_p0);
+			((GameAgent*)pAgent)->_Execute_Method_<METHOD_TYPE_GameAgent_DayPhase, void >();
 			return BT_SUCCESS;
 		}
-		behaviac::string method_p0;
-	};
-
-	class Assignment_bt_ParentBT_node9 : public Assignment
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Assignment_bt_ParentBT_node9, Assignment);
-		Assignment_bt_ParentBT_node9()
-		{
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			EBTStatus result = BT_SUCCESS;
-			int opr = 3;
-			((FirstAgent*)pAgent)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >() = opr;
-			return result;
-		}
-	};
-
-	class Condition_bt_ParentBT_node10 : public Condition
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Condition_bt_ParentBT_node10, Condition);
-		Condition_bt_ParentBT_node10()
-		{
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			int& opl = ((FirstAgent*)pAgent)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >();
-			int opr = 1;
-			bool op = PrivateDetails::Greater(opl, opr);
-			return op ? BT_SUCCESS : BT_FAILURE;
-		}
-	};
-
-	class Action_bt_ParentBT_node11 : public Action
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Action_bt_ParentBT_node11, Action);
-		Action_bt_ParentBT_node11()
-		{
-			method_p0 = (char*)("Hello Prefab!");
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			((FirstAgent*)pAgent)->Say(method_p0);
-			return BT_SUCCESS;
-		}
-		behaviac::string method_p0;
-	};
-
-	class Compute_bt_ParentBT_node7 : public Compute
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Compute_bt_ParentBT_node7, Compute);
-		Compute_bt_ParentBT_node7()
-		{
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			EBTStatus result = BT_SUCCESS;
-			int opr1 = 3;
-			int opr2 = 5;
-			((FirstAgent*)pAgent)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >() = (int)(opr1 * opr2);
-			return result;
-		}
-	};
-
-	class Action_bt_ParentBT_node4 : public Action
-	{
-	public:
-		BEHAVIAC_DECLARE_DYNAMIC_TYPE(Action_bt_ParentBT_node4, Action);
-		Action_bt_ParentBT_node4()
-		{
-			method_p0 = (char*)("Hello Parent!");
-		}
-	protected:
-		virtual EBTStatus update_impl(Agent* pAgent, EBTStatus childStatus)
-		{
-			BEHAVIAC_UNUSED_VAR(pAgent);
-			BEHAVIAC_UNUSED_VAR(childStatus);
-			((FirstAgent*)pAgent)->Say(method_p0);
-			return BT_SUCCESS;
-		}
-		behaviac::string method_p0;
 	};
 
 	class bt_ParentBT
@@ -174,126 +38,26 @@ namespace behaviac
 			pBT->SetName("ParentBT");
 			pBT->SetIsFSM(false);
 #if !BEHAVIAC_RELEASE
-			pBT->SetAgentType("FirstAgent");
+			pBT->SetAgentType("GameAgent");
 #endif
 			// children
 			{
-				Selector* node1 = BEHAVIAC_NEW Selector;
-				node1->SetClassNameString("Selector");
+				Sequence* node1 = BEHAVIAC_NEW Sequence;
+				node1->SetClassNameString("Sequence");
 				node1->SetId(1);
 #if !BEHAVIAC_RELEASE
-				node1->SetAgentType("FirstAgent");
+				node1->SetAgentType("GameAgent");
 #endif
 				pBT->AddChild(node1);
 				{
-					Sequence* node2 = BEHAVIAC_NEW Sequence;
-					node2->SetClassNameString("Sequence");
-					node2->SetId(2);
+					Action_bt_ParentBT_node0* node0 = BEHAVIAC_NEW Action_bt_ParentBT_node0;
+					node0->SetClassNameString("Action");
+					node0->SetId(0);
 #if !BEHAVIAC_RELEASE
-					node2->SetAgentType("FirstAgent");
+					node0->SetAgentType("GameAgent");
 #endif
-					node1->AddChild(node2);
-					{
-						Assignment_bt_ParentBT_node5* node5 = BEHAVIAC_NEW Assignment_bt_ParentBT_node5;
-						node5->SetClassNameString("Assignment");
-						node5->SetId(5);
-#if !BEHAVIAC_RELEASE
-						node5->SetAgentType("FirstAgent");
-#endif
-						node2->AddChild(node5);
-						node2->SetHasEvents(node2->HasEvents() | node5->HasEvents());
-					}
-					{
-						Condition_bt_ParentBT_node6* node6 = BEHAVIAC_NEW Condition_bt_ParentBT_node6;
-						node6->SetClassNameString("Condition");
-						node6->SetId(6);
-#if !BEHAVIAC_RELEASE
-						node6->SetAgentType("FirstAgent");
-#endif
-						node2->AddChild(node6);
-						node2->SetHasEvents(node2->HasEvents() | node6->HasEvents());
-					}
-					{
-						Action_bt_ParentBT_node0* node0 = BEHAVIAC_NEW Action_bt_ParentBT_node0;
-						node0->SetClassNameString("Action");
-						node0->SetId(0);
-#if !BEHAVIAC_RELEASE
-						node0->SetAgentType("FirstAgent");
-#endif
-						node2->AddChild(node0);
-						node2->SetHasEvents(node2->HasEvents() | node0->HasEvents());
-					}
-					node1->SetHasEvents(node1->HasEvents() | node2->HasEvents());
-				}
-				{
-					Sequence* node8 = BEHAVIAC_NEW Sequence;
-					node8->SetClassNameString("Sequence");
-					node8->SetId(8);
-#if !BEHAVIAC_RELEASE
-					node8->SetAgentType("FirstAgent");
-#endif
-					node1->AddChild(node8);
-					{
-						Assignment_bt_ParentBT_node9* node9 = BEHAVIAC_NEW Assignment_bt_ParentBT_node9;
-						node9->SetClassNameString("Assignment");
-						node9->SetId(9);
-#if !BEHAVIAC_RELEASE
-						node9->SetAgentType("FirstAgent");
-#endif
-						node8->AddChild(node9);
-						node8->SetHasEvents(node8->HasEvents() | node9->HasEvents());
-					}
-					{
-						Condition_bt_ParentBT_node10* node10 = BEHAVIAC_NEW Condition_bt_ParentBT_node10;
-						node10->SetClassNameString("Condition");
-						node10->SetId(10);
-#if !BEHAVIAC_RELEASE
-						node10->SetAgentType("FirstAgent");
-#endif
-						node8->AddChild(node10);
-						node8->SetHasEvents(node8->HasEvents() | node10->HasEvents());
-					}
-					{
-						Action_bt_ParentBT_node11* node11 = BEHAVIAC_NEW Action_bt_ParentBT_node11;
-						node11->SetClassNameString("Action");
-						node11->SetId(11);
-#if !BEHAVIAC_RELEASE
-						node11->SetAgentType("FirstAgent");
-#endif
-						node8->AddChild(node11);
-						node8->SetHasEvents(node8->HasEvents() | node11->HasEvents());
-					}
-					node1->SetHasEvents(node1->HasEvents() | node8->HasEvents());
-				}
-				{
-					Sequence* node3 = BEHAVIAC_NEW Sequence;
-					node3->SetClassNameString("Sequence");
-					node3->SetId(3);
-#if !BEHAVIAC_RELEASE
-					node3->SetAgentType("FirstAgent");
-#endif
-					node1->AddChild(node3);
-					{
-						Compute_bt_ParentBT_node7* node7 = BEHAVIAC_NEW Compute_bt_ParentBT_node7;
-						node7->SetClassNameString("Compute");
-						node7->SetId(7);
-#if !BEHAVIAC_RELEASE
-						node7->SetAgentType("FirstAgent");
-#endif
-						node3->AddChild(node7);
-						node3->SetHasEvents(node3->HasEvents() | node7->HasEvents());
-					}
-					{
-						Action_bt_ParentBT_node4* node4 = BEHAVIAC_NEW Action_bt_ParentBT_node4;
-						node4->SetClassNameString("Action");
-						node4->SetId(4);
-#if !BEHAVIAC_RELEASE
-						node4->SetAgentType("FirstAgent");
-#endif
-						node3->AddChild(node4);
-						node3->SetHasEvents(node3->HasEvents() | node4->HasEvents());
-					}
-					node1->SetHasEvents(node1->HasEvents() | node3->HasEvents());
+					node1->AddChild(node0);
+					node1->SetHasEvents(node1->HasEvents() | node0->HasEvents());
 				}
 				pBT->SetHasEvents(pBT->HasEvents() | node1->HasEvents());
 			}

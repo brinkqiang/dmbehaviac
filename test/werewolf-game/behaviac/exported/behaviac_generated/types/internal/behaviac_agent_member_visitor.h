@@ -10,10 +10,22 @@
 // Agent property and method handlers
 
 
-struct PROPERTY_TYPE_FirstAgent_p1 { };
-template<> inline int& FirstAgent::_Get_Property_<PROPERTY_TYPE_FirstAgent_p1>()
+struct METHOD_TYPE_GameAgent_CheckWinCondition { };
+template<> inline bool GameAgent::_Execute_Method_<METHOD_TYPE_GameAgent_CheckWinCondition>()
 {
-	return this->p1;
+	return this->GameAgent::CheckWinCondition();
+}
+
+struct METHOD_TYPE_GameAgent_DayPhase { };
+template<> inline void GameAgent::_Execute_Method_<METHOD_TYPE_GameAgent_DayPhase>()
+{
+	this->GameAgent::DayPhase();
+}
+
+struct METHOD_TYPE_GameAgent_NightPhase { };
+template<> inline void GameAgent::_Execute_Method_<METHOD_TYPE_GameAgent_NightPhase>()
+{
+	this->GameAgent::NightPhase();
 }
 
 

@@ -6,15 +6,17 @@
 
 #include "./behaviac/exported/behaviac_generated/types/behaviac_types.h"
 
+#include "dmutil.h"
+#include "dmtimermodule.h"
+#include "dmsingleton.h"
+#include "dmthread.h"
+#include "dmconsole.h"
+#include "dmtypes.h"
+
 #if BEHAVIAC_CCDEFINE_MSVC
 #include <windows.h>
 #include <tchar.h>
 #endif
-
-using namespace std;
-using namespace behaviac;
-
-FirstAgent* g_agent = nullptr;  // 使用你自己的代理类 FirstAgent
 
 static void SetExePath()
 {
@@ -37,13 +39,13 @@ static void SetExePath()
 #endif
 }
 
-class AgentManager
+class AgentManager : public CDMTimerNode
 {
 public:
     // 创建多个代理
     void CreateAgent(const char* pszTreeName)
     {
-        auto agent = behaviac::Agent::Create<FirstAgent>();
+        auto agent = behaviac::Agent::Create<GameAgent>();
         if (agent->btload(pszTreeName))
         {
             agent->btsetcurrent(pszTreeName);
@@ -51,17 +53,15 @@ public:
         }
         else
         {
-            cout << "Failed to load behavior tree for agent!" << endl;
+            std::cout << "Failed to load behavior tree for agent!" << std::endl;
         }
     }
 
     // 更新所有代理
-    void UpdateAgents()
+    bool UpdateAgents()
     {
-        for (auto& agent : agents)
-        {
-            behaviac::Workspace::GetInstance()->Update();  // 更新每个代理的行为树
-        }
+        behaviac::Workspace::GetInstance()->Update();
+        return false;
     }
 
     // 销毁所有代理
@@ -73,46 +73,134 @@ public:
         }
         agents.clear();
     }
-
+    virtual void OnTimer(uint64_t qwIDEvent)
+    {
+            
+    }
 private:
-    std::vector<FirstAgent*> agents;  // 使用shared_ptr管理代理的生命周期
+    std::vector<GameAgent*> agents;  // 使用shared_ptr管理代理的生命周期
 };
 
 bool InitBehavic(behaviac::Workspace::EFileFormat ff)
 {
-    behaviac::Workspace::GetInstance()->SetFilePath("../../test/werewolf-game/behaviac/exported");
+    std::string strPath  = DMGetRootPath() + PATH_DELIMITER + "../../test/werewolf-game/behaviac/exported";
+    behaviac::Workspace::GetInstance()->SetFilePath(strPath.c_str());
     behaviac::Workspace::GetInstance()->SetFileFormat(ff);
     return true;
 }
 
-int main()
+
+class CMain : public IDMConsoleSink,
+    public IDMThread,
+    public CDMThreadCtrl,
+    public CDMTimerNode,
+    public TSingleton<CMain>
 {
-    SetExePath();
-    cout << "Running behavior tree with multiple agents..." << endl;
+    friend class TSingleton<CMain>;
 
-    const char* szTreeName = "ParentBT";  // 设定行为树名称
-    int loopCount = 10;  // 执行的循环次数
 
-    InitBehavic(behaviac::Workspace::EFF_xml);  // 初始化Behaviac，使用XML格式
-
-    // 创建 AgentManager 并添加多个代理
-    AgentManager manager;
-    manager.CreateAgent(szTreeName);
-    manager.CreateAgent(szTreeName);  // 你可以继续添加更多的代理
-
-    clock_t start = clock();  // 开始计时
-
-    for (int i = 0; i < loopCount; ++i)
+    typedef enum
     {
-        manager.UpdateAgents();  // 更新所有代理的行为树
+        eTimerID_UUID = 0,
+        eTimerID_CRON = 1,
+        eTimerID_STOP,
+    } ETimerID;
+
+    typedef enum
+    {
+        eTimerTime_UUID = 1000,
+        eTimerTime_STOP = 20000,
+    } ETimerTime;
+
+public:
+    virtual void ThrdProc()
+    {
+        std::cout << "test start" << std::endl;
+
+
+        SetExePath();
+
+        InitBehavic(behaviac::Workspace::EFF_xml);
+    
+        const char* szTreeName = "ParentBT";  // 设定行为树名称
+
+        AgentManager manager;
+        manager.CreateAgent(szTreeName);
+
+        bool bBusy = false;
+
+        while (!m_bStop)
+        {
+            bBusy = false;
+
+            if (CDMTimerModule::Instance()->Run())
+            {
+                bBusy = true;
+            }
+
+            if (manager.UpdateAgents())
+            {
+                bBusy = true;
+            }
+
+            if (!bBusy)
+            {
+                SleepMs(1);
+            }
+        }
+
+        std::cout << "test stop" << std::endl;
     }
 
-    clock_t finish = clock();  // 结束计时
-    float duration = (float)(finish - start) / CLOCKS_PER_SEC;  // 计算执行时长
+    virtual void Terminate()
+    {
+        m_bStop = true;
+    }
 
-    cout << "Duration (seconds): " << duration << " RunCount: " << loopCount << endl;
+    virtual void OnCloseEvent()
+    {
+        Stop();
+    }
 
-    manager.CleanupAgents();  // 清理所有代理
+    virtual void OnTimer(uint64_t qwIDEvent, dm::any& oAny)
+    {
+        switch (qwIDEvent)
+        {
+        case eTimerID_UUID:
+        {
 
+        }
+        break;
+
+
+        default:
+            break;
+        }
+    }
+private:
+    CMain()
+        : m_bStop(false)
+    {
+        HDMConsoleMgr::Instance()->SetHandlerHook(this);
+    }
+
+    virtual ~CMain()
+    {
+    }
+
+private:
+    bool __Run()
+    {
+        return false;
+    }
+
+private:
+    volatile bool m_bStop;
+};
+
+int main(int argc, char* argv[])
+{
+    CMain::Instance()->Start(CMain::Instance());
+    CMain::Instance()->WaitFor();
     return 0;
 }

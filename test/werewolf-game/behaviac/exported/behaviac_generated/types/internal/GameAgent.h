@@ -4,35 +4,38 @@
 // PLEASE MODIFY AND REGENERETE IT IN THE DESIGNER FOR CLASS/MEMBERS/METHODS, ETC.
 // -------------------------------------------------------------------------------
 
-#include "FirstAgent.h"
+#ifndef _BEHAVIAC_GAMEAGENT_H_
+#define _BEHAVIAC_GAMEAGENT_H_
+
+#include "behaviac_headers.h"
 
 ///<<< BEGIN WRITING YOUR CODE FILE_INIT
-#include "dmlog.hpp"
+
 ///<<< END WRITING YOUR CODE
 
-FirstAgent::FirstAgent()
+class GameAgent : public behaviac::Agent
+///<<< BEGIN WRITING YOUR CODE GameAgent
+///<<< END WRITING YOUR CODE
 {
-	p1 = 0;
-///<<< BEGIN WRITING YOUR CODE CONSTRUCTOR
+public:
+	GameAgent();
+	virtual ~GameAgent();
+
+	BEHAVIAC_DECLARE_AGENTTYPE(GameAgent, behaviac::Agent)
+
+	private: bool CheckWinCondition();
+
+	private: void DayPhase();
+
+	private: void NightPhase();
+
+///<<< BEGIN WRITING YOUR CODE CLASS_PART
 
 ///<<< END WRITING YOUR CODE
-}
-
-FirstAgent::~FirstAgent()
-{
-///<<< BEGIN WRITING YOUR CODE DESTRUCTOR
-
-///<<< END WRITING YOUR CODE
-}
-
-void FirstAgent::Say(behaviac::string& value)
-{
-///<<< BEGIN WRITING YOUR CODE Say
-	fmt::print("{}\n", value);
-///<<< END WRITING YOUR CODE
-}
-
+};
 
 ///<<< BEGIN WRITING YOUR CODE FILE_UNINIT
 
 ///<<< END WRITING YOUR CODE
+
+#endif

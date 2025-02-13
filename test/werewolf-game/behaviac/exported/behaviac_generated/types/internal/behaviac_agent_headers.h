@@ -8,6 +8,6 @@
 #include "behaviac_headers.h"
 
 // THE FOLLOWING AGENT HEADER FILES IS GENERATED AUTOMATICALLY:
-#include "FirstAgent.h"
+#include "GameAgent.h"
 
 #endif // _BEHAVIAC_AGENT_HEADERS_H_

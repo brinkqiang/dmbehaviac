@@ -436,7 +436,7 @@ add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/btunittest")
 add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/btremotetest")
 add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/demo_running")
 add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/usertest")
-
+add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/werewolf-game")
 if (MSVC)
 	add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/test/btperformance")
 	if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/example/spaceship")

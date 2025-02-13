@@ -223,48 +223,6 @@ namespace behaviac
 		}
 	};
 
-	class CMethod_FirstAgent_Say : public CAgentMethodVoidBase
-	{
-		IInstanceMember* _value;
-
-	public: 
-		CMethod_FirstAgent_Say() : _value(0) 
-		{
-		}
-
-		CMethod_FirstAgent_Say(CMethod_FirstAgent_Say &rhs) : CAgentMethodVoidBase(rhs) , _value(0) 
-		{
-		}
-
-		~CMethod_FirstAgent_Say()
-		{
-			BEHAVIAC_DELETE _value;
-		}
-
-		virtual IInstanceMember* clone()
-		{
-			return BEHAVIAC_NEW CMethod_FirstAgent_Say(*this);
-		}
-
-		virtual void load(const char* instance, behaviac::vector<behaviac::string>& paramStrs)
-		{
-			BEHAVIAC_ASSERT(paramStrs.size() == 1);
-
-			behaviac::StringUtils::StringCopySafe(kInstanceNameMax, _instance, instance);
-			_value = AgentMeta::TParseProperty<behaviac::string >(paramStrs[0].c_str());
-		}
-
-		virtual void run(Agent* self)
-		{
-			BEHAVIAC_ASSERT(_value != NULL);
-
-			behaviac::string& pValue_value = *(behaviac::string*)_value->GetValue(self, behaviac::Meta::IsVector<behaviac::string >::Result, behaviac::GetClassTypeNumberId<behaviac::string >());
-			self = Agent::GetParentAgent(self, _instance);
-
-			((FirstAgent*)self)->Say(pValue_value);
-		}
-	};
-
 	class BehaviorLoaderImplement : BehaviorLoader
 	{
 	public:
@@ -279,7 +237,7 @@ namespace behaviac
 
 		virtual bool load()
 		{
-			AgentMeta::SetTotalSignature(1464207575u);
+			AgentMeta::SetTotalSignature(3701082323u);
 
 			AgentMeta* meta = NULL;
 			BEHAVIAC_UNUSED_VAR(meta);
@@ -294,12 +252,13 @@ namespace behaviac
 			meta->RegisterMethod(505785840u, BEHAVIAC_NEW CMethod_behaviac_Agent_VectorLength());
 			meta->RegisterMethod(502968959u, BEHAVIAC_NEW CMethod_behaviac_Agent_VectorRemove());
 
-			// FirstAgent
-			meta = BEHAVIAC_NEW AgentMeta(427122144u);
-			AgentMeta::GetAgentMetas()[1778122110u] = meta;
-			meta->RegisterMemberProperty(2082220067u, BEHAVIAC_NEW CMemberProperty< int >("p1", Set_FirstAgent_p1, Get_FirstAgent_p1));
-			meta->RegisterMethod(1045109914u, BEHAVIAC_NEW CAgentStaticMethodVoid_1<char*>(FunctionPointer_FirstAgent_LogMessage));
-			meta->RegisterMethod(702722749u, BEHAVIAC_NEW CMethod_FirstAgent_Say());
+			// GameAgent
+			meta = BEHAVIAC_NEW AgentMeta(4038892518u);
+			AgentMeta::GetAgentMetas()[709058374u] = meta;
+			meta->RegisterMethod(3054106138u, BEHAVIAC_NEW CAgentMethod< bool >(FunctionPointer_GameAgent_CheckWinCondition));
+			meta->RegisterMethod(2575952195u, BEHAVIAC_NEW CAgentMethodVoid(FunctionPointer_GameAgent_DayPhase));
+			meta->RegisterMethod(1045109914u, BEHAVIAC_NEW CAgentStaticMethodVoid_1<char*>(FunctionPointer_GameAgent_LogMessage));
+			meta->RegisterMethod(2518807795u, BEHAVIAC_NEW CAgentMethodVoid(FunctionPointer_GameAgent_NightPhase));
 			meta->RegisterMethod(2521019022u, BEHAVIAC_NEW CMethod_behaviac_Agent_VectorAdd());
 			meta->RegisterMethod(2306090221u, BEHAVIAC_NEW CMethod_behaviac_Agent_VectorClear());
 			meta->RegisterMethod(3483755530u, BEHAVIAC_NEW CMethod_behaviac_Agent_VectorContains());
@@ -307,7 +266,7 @@ namespace behaviac
 			meta->RegisterMethod(502968959u, BEHAVIAC_NEW CMethod_behaviac_Agent_VectorRemove());
 
 			AgentMeta::Register<behaviac::Agent>("behaviac::Agent");
-			AgentMeta::Register<FirstAgent>("FirstAgent");
+			AgentMeta::Register<GameAgent>("GameAgent");
 
 			return true;
 		}
@@ -315,7 +274,7 @@ namespace behaviac
 		virtual bool unLoad()
 		{
 			AgentMeta::UnRegister<behaviac::Agent>("behaviac::Agent");
-			AgentMeta::UnRegister<FirstAgent>("FirstAgent");
+			AgentMeta::UnRegister<GameAgent>("GameAgent");
 
 			return true;
 		}

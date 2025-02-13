@@ -15,10 +15,9 @@ namespace behaviac
 	// ---------------------------------------------------------------------
 
 	inline void FunctionPointer_behaviac_Agent_LogMessage(char* param0) { behaviac::Agent::LogMessage(param0); }
-
-	inline void Set_FirstAgent_p1(Agent* self, int value) { ((FirstAgent*)self)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >() = value; };
-	inline const void* Get_FirstAgent_p1(Agent* self) { return &((FirstAgent*)self)->_Get_Property_<PROPERTY_TYPE_FirstAgent_p1, int >(); };
-
-	inline void FunctionPointer_FirstAgent_LogMessage(char* param0) { FirstAgent::LogMessage(param0); }
+	inline bool FunctionPointer_GameAgent_CheckWinCondition(Agent* self) { return (bool)((GameAgent*)self)->_Execute_Method_<METHOD_TYPE_GameAgent_CheckWinCondition, bool >(); }
+	inline void FunctionPointer_GameAgent_DayPhase(Agent* self) { ((GameAgent*)self)->_Execute_Method_<METHOD_TYPE_GameAgent_DayPhase, void >(); }
+	inline void FunctionPointer_GameAgent_LogMessage(char* param0) { GameAgent::LogMessage(param0); }
+	inline void FunctionPointer_GameAgent_NightPhase(Agent* self) { ((GameAgent*)self)->_Execute_Method_<METHOD_TYPE_GameAgent_NightPhase, void >(); }
 }
 #endif // _BEHAVIAC_AGENT_PROPERTIES_H_

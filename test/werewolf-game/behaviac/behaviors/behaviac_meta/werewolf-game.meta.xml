@@ -25,11 +25,10 @@
         <Param Name="param0" Type="const char*" TypeFullName="System.String" DisplayName="param0" Desc="param0" />
       </Method>
     </agent>
-    <agent classfullname="FirstAgent" base="behaviac::Agent" DisplayName="FirstAgent" Desc="FirstAgent" IsRefType="true" IsCustomized="true">
-      <Member Name="p1" DisplayName="p1" Desc="p1" Class="FirstAgent" Type="int" TypeFullName="System.Int32" defaultvalue="0" Static="false" Public="false" Readonly="false" />
-      <Method Name="Say" DisplayName="Say" Desc="SayHello" Class="FirstAgent" ReturnType="void" ReturnTypeFullName="System.Void" Static="false" Public="true" istask="false">
-        <Param Name="value" Type="string&amp;" TypeFullName="System.String" IsRef="true" DisplayName="value" Desc="value" />
-      </Method>
+    <agent classfullname="GameAgent" base="behaviac::Agent" DisplayName="GameAgent" Desc="GameAgent" IsRefType="true" IsCustomized="true">
+      <Method Name="DayPhase" DisplayName="DayPhase" Desc="DayPhase" Class="GameAgent" ReturnType="void" ReturnTypeFullName="System.Void" Static="false" Public="false" istask="false" />
+      <Method Name="NightPhase" DisplayName="NightPhase" Desc="NightPhase" Class="GameAgent" ReturnType="void" ReturnTypeFullName="System.Void" Static="false" Public="false" istask="false" />
+      <Method Name="CheckWinCondition" DisplayName="CheckWinCondition" Desc="CheckWinCondition" Class="GameAgent" ReturnType="bool" ReturnTypeFullName="System.Boolean" Static="false" Public="false" istask="false" />
     </agent>
   </agents>
   <instances />
