@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<workspace name="werewolf-game" metafilename="." folder="behaviors" export="exported" language="cpp" promptmergingmeta="true" version="3">
+  <export>
+    <cs>
+      <isexported>False</isexported>
+      <exportfilecount>1</exportfilecount>
+    </cs>
+    <bson>
+      <isexported>False</isexported>
+    </bson>
+    <cpp>
+      <isexported>True</isexported>
+      <exportfilecount>1</exportfilecount>
+      <folder>../exported</folder>
+    </cpp>
+  </export>
+</workspace>
