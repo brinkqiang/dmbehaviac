@@ -10,6 +10,7 @@
 #include "behaviac_headers.h"
 
 ///<<< BEGIN WRITING YOUR CODE FILE_INIT
+#include "player.h"
 
 ///<<< END WRITING YOUR CODE
 
@@ -30,7 +31,13 @@ public:
 	private: void NightPhase();
 
 ///<<< BEGIN WRITING YOUR CODE CLASS_PART
+public:
+	std::vector<Player*> players;
 
+    int dayCount = 1;
+
+    void InitGame();
+	void EndGame();
 ///<<< END WRITING YOUR CODE
 };
 

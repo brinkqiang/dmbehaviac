@@ -7,7 +7,8 @@
 #include "GameAgent.h"
 
 ///<<< BEGIN WRITING YOUR CODE FILE_INIT
-
+#include "dmlog.hpp"
+#include "agentmanager.h"
 ///<<< END WRITING YOUR CODE
 
 GameAgent::GameAgent()
@@ -27,6 +28,26 @@ GameAgent::~GameAgent()
 bool GameAgent::CheckWinCondition()
 {
 ///<<< BEGIN WRITING YOUR CODE CheckWinCondition
+    int wolves = 0, villagers = 0;
+    for (auto& p : players) {
+        if (p->isAlive) {
+            if (p->role == "Werewolf") {
+                wolves++;
+            } else {
+                villagers++;
+            }
+        }
+    }
+    if (wolves == 0) {
+
+        fmt::print("村民获胜！狼人全部死亡！\n");
+
+        return true;
+    } else if (wolves >= villagers) {
+        fmt::print("狼人获胜！村民已无力反抗！\n");
+
+        return true;
+    }
     return false;
 ///<<< END WRITING YOUR CODE
 }
@@ -34,16 +55,100 @@ bool GameAgent::CheckWinCondition()
 void GameAgent::DayPhase()
 {
 ///<<< BEGIN WRITING YOUR CODE DayPhase
+    fmt::print("\n==== 第 {} 天 ====\n", dayCount);
+
+    // 投票逻辑
+    std::map<std::string, int> votes;
+    for (auto& p : players) {
+        if (p->isAlive) {
+            int targetIndex = rand() % players.size();
+            while (!players[targetIndex]->isAlive) {
+                targetIndex = rand() % players.size();
+            }
+            votes[players[targetIndex]->name]++;
+
+            fmt::print("{} 投票给 {}\n", p->name, players[targetIndex]->name);
+        }
+    }
+
+    // 计算最高票数的玩家
+    std::string eliminated = "";
+    int maxVotes = 0;
+    for (auto& v : votes) {
+        if (v.second > maxVotes) {
+            maxVotes = v.second;
+            eliminated = v.first;
+        }
+    }
+
+    if (!eliminated.empty()) {
+        for (auto& p : players) {
+            if (p->name == eliminated) {
+                p->isAlive = false;
+                fmt::print("{} 被投票出局\n", eliminated);
+
+                break;
+            }
+        }
+    }
+
+    dayCount++;
+
+    if (CheckWinCondition())
+    {
+        EndGame();
+    }
+
 ///<<< END WRITING YOUR CODE
 }
 
 void GameAgent::NightPhase()
 {
 ///<<< BEGIN WRITING YOUR CODE NightPhase
+    fmt::print("==== 夜晚 ====\n");
+
+    // 狼人行动
+    for (auto& p : players) {
+        if (p->isAlive && p->role == "Werewolf") {
+            p->Act(players);
+        }
+    }
+
+    // 预言家行动
+    for (auto& p : players) {
+        if (p->isAlive && p->role == "Seer") {
+            p->Act(players);
+        }
+    } 
+
+    if (CheckWinCondition())
+    {
+        EndGame();
+    }
 ///<<< END WRITING YOUR CODE
 }
 
 
 ///<<< BEGIN WRITING YOUR CODE FILE_UNINIT
+void GameAgent::InitGame() {
+    // 创建玩家
+    players.push_back(new Werewolf("狼人A"));
+    players.push_back(new Werewolf("狼人B"));
+    players.push_back(new Werewolf("狼人C"));
+    players.push_back(new Villager("村民A"));
+    players.push_back(new Villager("村民B"));
+    players.push_back(new Villager("村民C"));
+    players.push_back(new Villager("村民D"));
+    players.push_back(new Seer("预言家"));
+    players.push_back(new Villager("猎人"));  // 可以选择加入猎人角色
 
+    fmt::print("游戏开始！\n");
+}
+
+void GameAgent::EndGame() {
+    // 创建玩家
+
+    fmt::print("游戏结束！\n");
+    AgentManager::Instance()->EndGame();
+}
 ///<<< END WRITING YOUR CODE

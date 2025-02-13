@@ -1,69 +1,72 @@
-#include "behaviac/behaviac.h"
+﻿
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include <map>
 #include <cstdlib>
 
-using namespace std;
-using namespace behaviac;
-
 class Player {
 public:
-    string name;
-    string role;
+    std::string name;
+    std::string role;
     bool isAlive;
 
-    Player(string name, string role) : name(name), role(role), isAlive(true) {}
+    Player(std::string name, std::string role) : name(name), role(role), isAlive(true) {}
 
-    virtual void Act(vector<Player*>& players) {}
+    virtual void Act(std::vector<Player*>& players) {}
 };
 
 class Werewolf : public Player {
 public:
-    Werewolf(string name) : Player(name, "Werewolf") {}
+    Werewolf(std::string name) : Player(name, "Werewolf") {}
 
-    void Act(vector<Player*>& players) override {
+    void Act(std::vector<Player*>& players) override {
         // 选择一个活着的目标进行袭击
-        vector<Player*> targets;
+        std::vector<Player*> targets;
         for (auto& p : players) {
             if (p->isAlive && p->role != "Werewolf") {
                 targets.push_back(p);
             }
         }
         if (!targets.empty()) {
-            int targetIndex = rand() % targets.size();
+            int targetIndex = std::rand() % targets.size();
             targets[targetIndex]->isAlive = false;
-            cout << name << " 杀害了 " << targets[targetIndex]->name << endl;
+            std::cout << name << " 杀害了 " << targets[targetIndex]->name << std::endl;
         }
     }
 };
 
 class Villager : public Player {
 public:
-    Villager(string name) : Player(name, "Villager") {}
+    Villager(std::string name) : Player(name, "Villager") {}
 
-    void Act(vector<Player*>& players) override {
+    void Act(std::vector<Player*>& players) override {
         // 村民参与投票
-        cout << name << " 参与投票。" << endl;
+        std::cout << name << " 参与投票。" << std::endl;
     }
 };
 
 class Seer : public Player {
 public:
-    Seer(string name) : Player(name, "Seer") {}
+    Seer(std::string name) : Player(name, "Seer") {}
 
-    void Act(vector<Player*>& players) override {
+    void Act(std::vector<Player*>& players) override {
         // 选择一个目标查看身份
-        vector<Player*> targets;
+        std::vector<Player*> targets;
         for (auto& p : players) {
             if (p->isAlive && p != this) {
                 targets.push_back(p);
             }
         }
         if (!targets.empty()) {
-            int targetIndex = rand() % targets.size();
-            cout << name << " 预言家查看 " << targets[targetIndex]->name << " 的身份：" << targets[targetIndex]->role << endl;
+            int targetIndex = std::rand() % targets.size();
+            std::cout << name << " 预言家查看 " << targets[targetIndex]->name << " 的身份：" 
+                      << targets[targetIndex]->role << std::endl;
         }
     }
 };
+
+#endif // PLAYER_H
