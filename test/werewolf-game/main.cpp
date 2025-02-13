@@ -1,16 +1,6 @@
 ﻿
 #include "agentmanager.h"
 
-
-bool InitBehavic(behaviac::Workspace::EFileFormat ff)
-{
-    std::string strPath  = DMGetRootPath() + PATH_DELIMITER + "../../test/werewolf-game/behaviac/exported";
-    behaviac::Workspace::GetInstance()->SetFilePath(strPath.c_str());
-    behaviac::Workspace::GetInstance()->SetFileFormat(ff);
-    return true;
-}
-
-
 class CMain : public IDMConsoleSink,
     public IDMThread,
     public CDMThreadCtrl,
@@ -33,13 +23,19 @@ class CMain : public IDMConsoleSink,
         eTimerTime_STOP = 20000,
     } ETimerTime;
 
+
+    static bool InitBehavic(behaviac::Workspace::EFileFormat ff)
+    {
+        std::string strPath  = DMGetRootPath() + PATH_DELIMITER + "../../test/werewolf-game/behaviac/exported";
+        behaviac::Workspace::GetInstance()->SetFilePath(strPath.c_str());
+        behaviac::Workspace::GetInstance()->SetFileFormat(ff);
+        return true;
+    }
+
 public:
     virtual void ThrdProc()
     {
         std::cout << "test start" << std::endl;
-
-
-        SetExePath();
 
         InitBehavic(behaviac::Workspace::EFF_xml);
     

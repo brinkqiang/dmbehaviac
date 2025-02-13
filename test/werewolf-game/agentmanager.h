@@ -48,29 +48,6 @@ static void sendSigIntToSelf() {
 #endif
 }
 
-static void SetExePath()
-{
-#if BEHAVIAC_CCDEFINE_MSVC
-	TCHAR szCurPath[_MAX_PATH];
-
-	GetModuleFileName(NULL, szCurPath, _MAX_PATH);
-
-	TCHAR* p = szCurPath;
-
-	while (_tcschr(p, L'\\'))
-	{
-		p = _tcschr(p, L'\\');
-		p++;
-	}
-
-	*p = L'\0';
-
-	SetCurrentDirectory(szCurPath);
-#endif
-}
-
-
-
 class AgentManager : public CDMTimerNode, public TSingleton<AgentManager>
 {
 public:
